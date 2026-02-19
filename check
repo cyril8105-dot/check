@@ -81,7 +81,7 @@ Checks Java installation.
 Downloads latest SonarQube server package.
 
 Step 14 — Extract package
-unzip sonarqube-25.2.0.102705.zip
+unzip sonarqube-25.2.0.zip
 
 Step 15 — Move to /opt directory
 sudo mv sonarqube-25.2.0 /opt/sonarqube
@@ -164,10 +164,6 @@ Step 27 — Configure user limits
 sudo nano /etc/security/limits.d/99-sonarqube.conf
 
 
-Add:
-
-sonarqube - nofile 131072
-sonarqube - nproc 8192
 
 Step 28 — Allow firewall port
 sudo ufw allow 9000/tcp
@@ -178,13 +174,8 @@ Allows browser access to SonarQube UI.
 
 5. Create System Service
 Step 29 — Create service file
-sudo nano /etc/systemd/system/sonarqube.service
+sudo nano sonarqube.service
 
-
-Add:
-
-[Install]
-WantedBy=multi-user.target
 
 Step 30 — Reload systemd
 sudo systemctl daemon-reload
@@ -199,4 +190,3 @@ Step 33 — Check status
 sudo systemctl status sonarqube
 
 
-Verifies SonarQube is running.
